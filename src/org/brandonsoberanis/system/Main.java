@@ -18,17 +18,16 @@ import org.brandonsoberanis.controller.MenuClienteController;
 import org.brandonsoberanis.controller.MenuEmpleadoController;
 import org.brandonsoberanis.controller.MenuPrincipalController;
 import org.brandonsoberanis.controller.MenuTicketSoporteController;
-import org.brandonsoberanis.model.Empleado;
 
 /**
  *
- * @author Informatica pero que pro
+ * @author Carlos
  */
 public class Main extends Application {
-    private final String URLVIEW = "/org/brandonsoberanis/view/";
+    private final String URLVIEW = "/org/carloscortez/view/";
     private Stage stage;
     private Scene scene;
-    private Object primaryStage;
+    private Object menuEmpleadoController;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -92,17 +91,18 @@ public class Main extends Application {
         }
     }
     
-    public void MenuEmpleadosView(){
+    public void menuEmpleadoView(){
         try{
-            MenuEmpleadoController MenuEmpleadosView = (MenuEmpleadoController)switchScene("MenuEmpleadosView.fxml", 750,650);
-            MenuEmpleadosView.setStage(this);
+            MenuEmpleadoController menuEmpleadoController;
+            menuEmpleadoController = (MenuEmpleadoController)switchScene("MenuEmpleadoController.fxml", 750,650);
+            menuEmpleadoController.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
     }
-    
-    
-    
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -111,17 +111,5 @@ public class Main extends Application {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void formEmpleadoView(int i, Empleado empleadoSeleccionado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
-    public void menuTicketSoporteView(int i, Empleado empleadoSeleccionado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
-
-    
-
-    
-    
-

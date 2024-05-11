@@ -24,6 +24,7 @@ public class MenuPrincipalController implements Initializable {
     private Main stage;
     @FXML
     MenuItem btnClientes, btnTickets;
+    private Object btnEmpleado;
     
     @FXML
     public void handleButtonAction(ActionEvent event) throws Exception{
@@ -31,6 +32,8 @@ public class MenuPrincipalController implements Initializable {
             stage.menuClienteView();
         }else if(event.getSource() == btnTickets){
             stage.menuTicketSoporteView();
+        }else if(event.getSource() == btnEmpleado){
+            stage.menuEmpleadoView();
         }
     }
     
