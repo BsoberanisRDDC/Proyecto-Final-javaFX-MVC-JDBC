@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.brandonsoberanis.controller;
 
 import java.net.URL;
@@ -14,26 +9,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import org.brandonsoberanis.dao.Conexion;
 import org.brandonsoberanis.dto.ClienteDTO;
 import org.brandonsoberanis.model.Cliente;
 import org.brandonsoberanis.system.Main;
+import org.brandonsoberanis.utils.SuperKinalAlert;
 
-/**
- * FXML Controller class
- *
- * @author Informatica
- */
 public class FormClienteController implements Initializable {
     private Main stage;
+    
     private int op;
     
     private static Connection conexion = null;
     private static PreparedStatement statement = null;
     
     @FXML
-    TextField tfClienteId, tfNombre, tfApellido, tfTelefono, tfDireccion, tfNit;
+    TextField tfClienteId, tfNombre, tfApellido, tfTelefono, tfNit, tfDireccion;
+    
     @FXML
     Button btnGuardar, btnCancelar;
     
@@ -44,16 +38,32 @@ public class FormClienteController implements Initializable {
             ClienteDTO.getClienteDTO().setCliente(null);
         }else if(event.getSource() == btnGuardar){
             if(op == 1){
-                agregarCliente();
-                stage.menuClienteView();
+                if(!tfNombre.getText().equals("") && !tfApellido.getText().equals("") && !tfDireccion.getText().equals("")){
+                    agregarCliente();
+                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(400);
+                    stage.menuClienteView();
+                }else{
+                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
+                    tfNombre.requestFocus();
+                }
             }else if(op == 2){
-                editarCliente();
-                ClienteDTO.getClienteDTO().setCliente(null);
-                stage.menuClienteView();
+                if(!tfNombre.getText().equals("") && !tfApellido.getText().equals("") && !tfDireccion.getText().equals("")){
+                    if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(505).get() == ButtonType.OK){
+                        editarCliente();
+                        ClienteDTO.getClienteDTO().setCliente(null);
+                        SuperKinalAlert.getInstance().mostrarAlertaInformacion(500);
+                        stage.menuClienteView();
+                    }else{
+                        stage.menuClienteView();
+                    }
+                }else{
+                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
+                    tfNombre.requestFocus();
+                }
             }
         }
     }
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(ClienteDTO.getClienteDTO().getCliente() != null){
@@ -66,10 +76,10 @@ public class FormClienteController implements Initializable {
         tfNombre.setText(cliente.getNombre());
         tfApellido.setText(cliente.getApellido());
         tfTelefono.setText(cliente.getTelefono());
-        tfDireccion.setText(cliente.getDireccion());
         tfNit.setText(cliente.getNit());
+        tfDireccion.setText(cliente.getDireccion());
     }
-
+    
     public void agregarCliente(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
@@ -77,9 +87,9 @@ public class FormClienteController implements Initializable {
             statement = conexion.prepareStatement(sql);
             statement.setString(1, tfNombre.getText());
             statement.setString(2, tfApellido.getText());
-            statement.setString(3, tfTelefono.getText()); 
-            statement.setString(4, tfDireccion.getText());
-            statement.setString(5, tfNit.getText());
+            statement.setString(3, tfTelefono.getText());
+            statement.setString(4, tfNit.getText());
+            statement.setString(5, tfDireccion.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -100,14 +110,14 @@ public class FormClienteController implements Initializable {
     public void editarCliente(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_editarCliente(?,?,?,?,?,?)";
-            statement = conexion.prepareStatement(sql);
+            String sql = "call sp_editarCliente(?, ?, ?, ?, ?, ?)";
+            statement = conexion.prepareCall(sql);
             statement.setInt(1, Integer.parseInt(tfClienteId.getText()));
             statement.setString(2, tfNombre.getText());
             statement.setString(3, tfApellido.getText());
             statement.setString(4, tfTelefono.getText());
-            statement.setString(5, tfDireccion.getText());
-            statement.setString(6, tfNit.getText());
+            statement.setString(5, tfNit.getText());
+            statement.setString(6, tfDireccion.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -124,7 +134,7 @@ public class FormClienteController implements Initializable {
             }
         }
     }
-            
+
     public Main getStage() {
         return stage;
     }
@@ -136,4 +146,6 @@ public class FormClienteController implements Initializable {
     public void setOp(int op) {
         this.op = op;
     }
+    
+    
 }

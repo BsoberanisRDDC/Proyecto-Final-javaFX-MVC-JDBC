@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.brandonsoberanis.controller;
 
 import java.net.URL;
@@ -18,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -26,14 +22,11 @@ import org.brandonsoberanis.dao.Conexion;
 import org.brandonsoberanis.dto.ClienteDTO;
 import org.brandonsoberanis.model.Cliente;
 import org.brandonsoberanis.system.Main;
+import org.brandonsoberanis.utils.SuperKinalAlert;
 
-/**
- * FXML Controller class
- *
- * @author Informatica
- */
 public class MenuClienteController implements Initializable {
     private Main stage;
+    
     private int op;
     
     private static Connection conexion;
@@ -42,14 +35,16 @@ public class MenuClienteController implements Initializable {
     
     @FXML
     TableView tblClientes;
+    
     @FXML
-    TableColumn colClienteId, colNombre, colApellido, colTelefono, colDireccion, colNit;
+    TableColumn colClienteId, colNombre, colApellido, colTelefono, colNit, colDireccion;
+    
     @FXML
     Button btnRegresar, btnAgregar, btnEditar, btnEliminar, btnBuscar;
+    
     @FXML
     TextField tfClienteId;
     
-    @FXML
     public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnRegresar){
             stage.menuPrincipalView();
@@ -59,8 +54,10 @@ public class MenuClienteController implements Initializable {
             ClienteDTO.getClienteDTO().setCliente((Cliente)tblClientes.getSelectionModel().getSelectedItem());
             stage.formClienteView(2);
         }else if(event.getSource() == btnEliminar){
-            eliminarCliente(((Cliente)tblClientes.getSelectionModel().getSelectedItem()).getClienteId());
-            cargarDatos();
+            if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(404).get() == ButtonType.OK){
+                eliminarCliente(((Cliente)tblClientes.getSelectionModel().getSelectedItem()).getClienteId());
+                cargarDatos();
+            }
         }else if(event.getSource() == btnBuscar){
             tblClientes.getItems().clear();
             
@@ -80,39 +77,37 @@ public class MenuClienteController implements Initializable {
     
     public void cargarDatos(){
         if(op == 3){
-            //LLENAR LA TABLA CON EL CLIENTE BUSCADO
-            @SuppressWarnings("unchecked")
-            boolean add = tblClientes.getItems().add(buscarCliente());
+            tblClientes.getItems().add(buscarCliente());
             op = 0;
         }else{
             tblClientes.setItems(listarClientes());
+            colClienteId.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("clienteId"));
+            colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
+            colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
+            colTelefono.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefono"));
+            colNit.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nit"));
+            colDireccion.setCellValueFactory(new PropertyValueFactory<Cliente, String>("direccion"));
         }
-        colClienteId.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("clienteId"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
-        colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
-        colTelefono.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefono"));
-        colDireccion.setCellValueFactory(new PropertyValueFactory<Cliente, String>("direccion"));
-        colNit.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nit"));
     }
-    
+
     public ObservableList<Cliente> listarClientes(){
         ArrayList<Cliente> clientes = new ArrayList<>();
         
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_listarClientes()";
+            String sql = "call sp_ListarClientes()";
             statement = conexion.prepareStatement(sql);
             resultSet = statement.executeQuery();
             
             while(resultSet.next()){
                 int clienteId = resultSet.getInt("clienteId");
-                String nombre = resultSet.getString("nombre");
+                String nombre = resultSet.getString("nombre");  
                 String apellido = resultSet.getString("apellido");
                 String telefono = resultSet.getString("telefono");
-                String direccion = resultSet.getString("direccion");
                 String nit = resultSet.getString("nit");
+                String direccion = resultSet.getString("direccion");
                 
-                clientes.add(new Cliente(clienteId, nombre, apellido, telefono, direccion, nit));
+                clientes.add(new Cliente(clienteId, nombre, apellido, telefono, nit, direccion));
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -131,6 +126,7 @@ public class MenuClienteController implements Initializable {
                 System.out.println(e.getMessage());
             }
         }
+        
         return FXCollections.observableList(clientes);
     }
     
@@ -147,7 +143,7 @@ public class MenuClienteController implements Initializable {
             try{
                 if(statement != null){
                     statement.close();
-                } 
+                }
                 if(conexion != null){
                     conexion.close();
                 }
@@ -171,10 +167,10 @@ public class MenuClienteController implements Initializable {
                 String nombre = resultSet.getString("nombre");
                 String apellido = resultSet.getString("apellido");
                 String telefono = resultSet.getString("telefono");
-                String direccion = resultSet.getString("direccion");
                 String nit = resultSet.getString("nit");
+                String direccion = resultSet.getString("direccion");
                 
-                cliente = new Cliente(clienteId, nombre, apellido, telefono, direccion, nit);
+                cliente = new Cliente(clienteId, nombre, apellido, telefono, nit, direccion);
             }
             
         }catch(SQLException e){
@@ -190,11 +186,12 @@ public class MenuClienteController implements Initializable {
                 if(conexion != null){
                     conexion.close();
                 }
+                
             }catch(SQLException e){
                 System.out.println(e.getMessage());
             }
         }
-        
+     
         return cliente;
     }
 

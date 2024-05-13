@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="SuperMercado.jnlp">
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="superMercado.jnlp">
   <information>
-    <title>SuperMercado</title>
-    <vendor>Carlos</vendor>
+    <title>superMercado</title>
+    <vendor>dmont</vendor>
     <description>null</description>
     <offline-allowed/>
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SuperMercado.jar" size="897586" download="eager" />
-    <jar href="lib\mysql-connector-java-8.0.12.jar" size="2020431" download="eager" />
+    <jar href="superMercado.jar" size="6232821" download="eager" />
   </resources>
-  <jfx:javafx-desc  width="800" height="600" main-class="org.brandonsoberanis.system.Main"  name="SuperMercado" />
+  <jfx:javafx-desc  width="800" height="600" main-class="org.brandonsoberanis.system.Main"  name="superMercado" />
   <update check="always"/>
 </jnlp>

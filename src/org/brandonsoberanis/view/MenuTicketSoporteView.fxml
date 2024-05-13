@@ -9,43 +9,30 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.brandonsoberanis.controller.MenuTicketSoporteController">
+<AnchorPane id="AnchorPane" prefHeight="735.0" prefWidth="1182.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.brandonsoberanis.controller.MenuTicketSoporteController">
    <children>
-      <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="750.0" fitWidth="1200.0" layoutX="-18.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/FondoMuneTicketSoporte.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfTicketId" editable="false" layoutX="32.0" layoutY="212.0" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="228.0" />
-      <TextArea fx:id="taDescripcion" layoutX="43.0" layoutY="330.0" prefHeight="146.0" prefWidth="303.0" wrapText="true" />
-      <ComboBox fx:id="cmbCliente" layoutX="372.0" layoutY="205.0" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="238.0" />
-      <ComboBox fx:id="cmbFactura" layoutX="673.0" layoutY="212.0" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="238.0" />
-      <ComboBox fx:id="cmbEstatus" layoutX="14.0" layoutY="552.0" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="238.0" />
-      <TableView fx:id="tblTickets" layoutX="418.0" layoutY="340.0" onMouseClicked="#cargarForm" prefHeight="411.0" prefWidth="782.0">
-        <columns>
-          <TableColumn fx:id="colTicketId" prefWidth="66.39999389648438" text="Ticket Id" />
-          <TableColumn fx:id="colDescripcion" prefWidth="299.20001220703125" text="Descripcion" />
-            <TableColumn fx:id="colEstatus" prefWidth="150.39996337890625" text="Estatus" />
-            <TableColumn fx:id="colCliente" prefWidth="159.199951171875" text="Cliente" />
-            <TableColumn fx:id="colFacturaId" prefWidth="107.199951171875" text="Factura Id" />
-        </columns>
+      <TextField fx:id="tfTicketId" editable="false" layoutX="56.0" layoutY="234.0" prefHeight="25.0" prefWidth="186.0" promptText="Ticket Id" />
+      <TextArea fx:id="taDescripcion" layoutX="27.0" layoutY="360.0" prefHeight="118.0" prefWidth="288.0" promptText="Ingrese la descripcion de su problema." wrapText="true" />
+      <ComboBox fx:id="cmbEstatus" layoutX="27.0" layoutY="572.0" prefHeight="26.0" prefWidth="186.0" />
+      <Button fx:id="btnVaciar" alignment="CENTER" layoutX="149.0" layoutY="622.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Vaciar Form" wrapText="true" />
+      <ComboBox fx:id="cmbCliente" layoutX="386.0" layoutY="208.0" prefHeight="26.0" prefWidth="186.0" />
+      <ComboBox fx:id="cmbFactura" layoutX="695.0" layoutY="214.0" prefHeight="26.0" prefWidth="186.0" />
+      <Button fx:id="btnRegresar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="63.0" text="Regresar" />
+      <TableView fx:id="tblTickets" layoutX="386.0" layoutY="331.0" onMouseClicked="#cargarForm" prefHeight="348.0" prefWidth="682.0">
+         <columns>
+            <TableColumn fx:id="colTicketId" prefWidth="75.0" text="Ticket Id" />
+            <TableColumn fx:id="colDescripcion" prefWidth="209.5999755859375" text="Descripcion" />
+            <TableColumn fx:id="colEstatus" prefWidth="102.4000244140625" text="Estatus" />
+            <TableColumn fx:id="colCliente" prefWidth="209.5999755859375" text="Cliente" />
+            <TableColumn fx:id="colFacturaId" prefWidth="83.99997558593748" text="Factura Id" />
+         </columns>
       </TableView>
-      <Button fx:id="btnGuardar" layoutX="17.0" layoutY="628.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="136.0" text="Guardar">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnVaciar" layoutX="169.0" layoutY="628.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="136.0" text="Vaciar Form">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnRegresar" layoutX="17.0" layoutY="700.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="136.0" text="Regresar">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      <Button fx:id="btnGuardar" layoutX="35.0" layoutY="622.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Guardar" />
    </children>
 </AnchorPane>

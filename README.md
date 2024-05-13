@@ -1,2 +1,2 @@
-# IN5CM-Proyecto-SuperKinal2024
-Proyecto implementando JavaFX-JDBC-MVC
+# Proyectos-JavaFX-MVC-JDBC
+Proyectos Kinal con JavaFX, MVC, JDBC.

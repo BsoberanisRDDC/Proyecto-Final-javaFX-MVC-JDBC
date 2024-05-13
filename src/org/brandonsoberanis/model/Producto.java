@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.brandonsoberanis.model;
+
+import java.sql.Blob;
 
 public class Producto {
     private int productoId;
@@ -12,13 +10,18 @@ public class Producto {
     private double precioVentaUnitario;
     private double precioVentaMayor;
     private double precioCompra;
-    private int imagenProducto;
+    private Blob imagenProducto;
+    
     private int distribuidorId;
+    private String distribuidor;
+    
     private int categoriaProductoId;
+    private String categoriaProducto;
 
-    public Producto(int productoId, String nombreProducto, String descripcionProducto, int cantidadStock,
-                    double precioVentaUnitario, double precioVentaMayor, double precioCompra, int imagenProducto,
-                    int distribuidorId, int categoriaProductoId) {
+    public Producto() {
+    }
+
+    public Producto(int productoId, String nombreProducto, String descripcionProducto, int cantidadStock, double precioVentaUnitario, double precioVentaMayor, double precioCompra, Blob imagenProducto, String distribuidor, String categoriaProducto) {
         this.productoId = productoId;
         this.nombreProducto = nombreProducto;
         this.descripcionProducto = descripcionProducto;
@@ -27,8 +30,8 @@ public class Producto {
         this.precioVentaMayor = precioVentaMayor;
         this.precioCompra = precioCompra;
         this.imagenProducto = imagenProducto;
-        this.distribuidorId = distribuidorId;
-        this.categoriaProductoId = categoriaProductoId;
+        this.distribuidor = distribuidor;
+        this.categoriaProducto = categoriaProducto;
     }
 
     public int getProductoId() {
@@ -87,11 +90,11 @@ public class Producto {
         this.precioCompra = precioCompra;
     }
 
-    public int getImagenProducto() {
+    public Blob getImagenProducto() {
         return imagenProducto;
     }
 
-    public void setImagenProducto(int imagenProducto) {
+    public void setImagenProducto(Blob imagenProducto) {
         this.imagenProducto = imagenProducto;
     }
 
@@ -103,6 +106,14 @@ public class Producto {
         this.distribuidorId = distribuidorId;
     }
 
+    public String getDistribuidor() {
+        return distribuidor;
+    }
+
+    public void setDistribuidor(String distribuidor) {
+        this.distribuidor = distribuidor;
+    }
+
     public int getCategoriaProductoId() {
         return categoriaProductoId;
     }
@@ -110,4 +121,19 @@ public class Producto {
     public void setCategoriaProductoId(int categoriaProductoId) {
         this.categoriaProductoId = categoriaProductoId;
     }
+
+    public String getCategoriaProducto() {
+        return categoriaProducto;
+    }
+
+    public void setCategoriaProducto(String categoriaProducto) {
+        this.categoriaProducto = categoriaProducto;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "productoId=" + productoId + ", nombreProducto=" + nombreProducto + ", descripcionProducto=" + descripcionProducto + ", cantidadStock=" + cantidadStock + ", precioVentaUnitario=" + precioVentaUnitario + ", precioVentaMayor=" + precioVentaMayor + ", precioCompra=" + precioCompra + ", imagenProducto=" + imagenProducto + ", distribuidorId=" + distribuidorId + ", distribuidor=" + distribuidor + ", categoriaProductoId=" + categoriaProductoId + ", categoriaProducto=" + categoriaProducto + '}';
+    }
+    
+    
 }

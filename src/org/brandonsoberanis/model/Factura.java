@@ -1,59 +1,57 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.brandonsoberanis.model;
 
-/**
- *
- * @author JULIO SOBERANIS
- */
-import java.time.LocalDateTime;
-import java.util.List;
+import java.sql.Date;
+import java.sql.Time;
 
 public class Factura {
-    private final int detalleFacturasId;
-    private final int facturaId;
-    private final int productoID;
-    private final double cantidad;
-    private final double precioUnitario;
-    private int facturaID;
-    private LocalDateTime fechaHora;
+    private int facturaId;
+    private Date fecha;
+    private Time hora;
+    
     private int clienteId;
+    private String cliente;
+    private int empleadoId;
+    private String empleado;
+    
     private double total;
-    private List<DetalleFactura> detalles;
 
-    // Constructor
-    public Factura(int detalleFacturasId, int facturaId, int productoID, double cantidad, double precioUnitario) {
-        this.detalleFacturasId = detalleFacturasId;
+    public Factura() {
+    }
+
+    public Factura(int facturaId, Date fecha, Time hora, String cliente, String empleado, double total) {
         this.facturaId = facturaId;
-        this.productoID = productoID;
-        this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.cliente = cliente;
+        this.empleado = empleado;
+        this.total = total;
     }
 
-    // Métodos getter y setter
-
-    public int getDetalleFacturaID() {
-        int facturaID = 0;
-        return facturaID;
+    public int getFacturaId() {
+        return facturaId;
     }
 
-    public void setFacturaID(int facturaID) {
-        this.facturaID = facturaID;
+    public void setFacturaId(int facturaId) {
+        this.facturaId = facturaId;
     }
 
-    public LocalDateTime getFechaHora() {
-        LocalDateTime fechaHora = null;
-        return fechaHora;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Time getHora() {
+        return hora;
+    }
+
+    public void setHora(Time hora) {
+        this.hora = hora;
     }
 
     public int getClienteId() {
-        int clienteId = 0;
         return clienteId;
     }
 
@@ -61,8 +59,31 @@ public class Factura {
         this.clienteId = clienteId;
     }
 
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getEmpleadoId() {
+        return empleadoId;
+    }
+
+    public void setEmpleadoId(int empleadoId) {
+        this.empleadoId = empleadoId;
+    }
+
+    public String getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(String empleado) {
+        this.empleado = empleado;
+    }
+
     public double getTotal() {
-        double total = 0;
         return total;
     }
 
@@ -70,47 +91,10 @@ public class Factura {
         this.total = total;
     }
 
-    public List<DetalleFactura> getDetalles() {
-        List<DetalleFactura> detalles = null;
-        return detalles;
+    @Override
+    public String toString() {
+        return "Factura{" + "facturaId=" + facturaId + ", fecha=" + fecha + ", hora=" + hora + ", clienteId=" + clienteId + ", cliente=" + cliente + ", empleadoId=" + empleadoId + ", empleado=" + empleado + ", total=" + total + '}';
     }
-
-    public void setDetalles(List<DetalleFactura> detalles) {
-        this.detalles = detalles;
-    }
-
-    // Método para agregar un detalle a la factura
-    public void agregarDetalle(DetalleFactura detalle) {
-        detalles.add(detalle);
-        calcularTotal(); // Recalcular total al agregar un detalle
-    }
-
-    // Método para calcular el total de la factura automáticamente
-      public double getPrecioTotal() {
-        return cantidad * precioUnitario;
-    }
-
-    private void calcularTotal() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public int getFacturaID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getFecha() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getHora() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public int getEmpleadoId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-        }
-       
     
-
-
+    
+}

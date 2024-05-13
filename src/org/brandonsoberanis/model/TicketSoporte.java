@@ -1,23 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.brandonsoberanis.model;
 
-/**
- *
- * @author Informatica
- */
 public class TicketSoporte {
     private int ticketSoporteId;
     private String descripcion;
     private String estatus;
+    
+    //Llaves foráneas con Join :)))))
     private int clienteId;
     private String cliente;
+    
+    //Si no se usa de ninguna manera (Objeto o Join), solamente se deja como un Id
     private int facturaId;
     
     public TicketSoporte(){
+    
     }
 
     public TicketSoporte(int ticketSoporteId, String descripcion, String estatus, String cliente, int facturaId) {
@@ -80,4 +76,6 @@ public class TicketSoporte {
     public String toString() {
         return "TicketSoporte{" + "ticketSoporteId=" + ticketSoporteId + ", descripcion=" + descripcion + ", estatus=" + estatus + ", clienteId=" + clienteId + ", cliente=" + cliente + ", facturaId=" + facturaId + '}';
     }
+    
+    
 }

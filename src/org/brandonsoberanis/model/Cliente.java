@@ -1,32 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.brandonsoberanis.model;
 
-/**
- *
- * @author Informatica
- */
 public class Cliente {
     private int clienteId;
     private String nombre;
     private String apellido;
     private String telefono;
-    private String direccion;
     private String nit;
+    private String direccion;
 
     public Cliente() {
+        
     }
 
-    public Cliente(int clienteId, String nombre, String apellido, String telefono, String direccion, String nit) {
+    public Cliente(int clienteId, String nombre, String apellido, String telefono, String nit, String direccion) {
         this.clienteId = clienteId;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
-        this.direccion = direccion;
         this.nit = nit;
+        this.direccion = direccion;
     }
 
     public int getClienteId() {
@@ -61,14 +53,6 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getNit() {
         return nit;
     }
@@ -77,9 +61,17 @@ public class Cliente {
         this.nit = nit;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     @Override
     public String toString() {
-        return "Cliente{" + "clienteId=" + clienteId + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", direccion=" + direccion + ", nit=" + nit + '}';
+        return "Id: " + clienteId + " | " + nombre + " " + apellido;
     }
     
     

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.brandonsoberanis.system;
 
 import java.io.InputStream;
@@ -13,26 +8,30 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.brandonsoberanis.controller.FormCargoController;
+import org.brandonsoberanis.controller.FormCategoriaProductoController;
 import org.brandonsoberanis.controller.FormClienteController;
+import org.brandonsoberanis.controller.FormCompraController;
+import org.brandonsoberanis.controller.FormDistribuidorController;
+import org.brandonsoberanis.controller.MenuCargoController;
+import org.brandonsoberanis.controller.MenuCategoriaProductoController;
 import org.brandonsoberanis.controller.MenuClienteController;
+import org.brandonsoberanis.controller.MenuCompraController;
+import org.brandonsoberanis.controller.MenuDistribuidorController;
 import org.brandonsoberanis.controller.MenuEmpleadoController;
+import org.brandonsoberanis.controller.MenuFacturaController;
 import org.brandonsoberanis.controller.MenuPrincipalController;
 import org.brandonsoberanis.controller.MenuTicketSoporteController;
 
-/**
- *
- * @author Carlos
- */
 public class Main extends Application {
-    private final String URLVIEW = "/org/carloscortez/view/";
+    private final String URLVIEW = "/org/brandonsoberanis/view/";
     private Stage stage;
     private Scene scene;
-    private Object menuEmpleadoController;
     
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        stage.setTitle("Super Kinal APP");
+        stage.setTitle("Super Kinal S.A");
         menuPrincipalView();
         stage.show();
     }
@@ -45,18 +44,18 @@ public class Main extends Application {
         loader.setBuilderFactory(new JavaFXBuilderFactory());
         loader.setLocation(Main.class.getResource(URLVIEW + fxmlName));
         
-        scene = new Scene((AnchorPane) loader.load(file), width, height);
+        scene = new Scene((AnchorPane)loader.load(file), width, height);
         stage.setScene(scene);
         stage.sizeToScene();
         
         resultado = (Initializable)loader.getController();
-                
+        
         return resultado;
     }
     
     public void menuPrincipalView(){
         try{
-            MenuPrincipalController menuPrincipalView = (MenuPrincipalController)switchScene("MenuPrincipalView.fxml", 950, 675);
+            MenuPrincipalController menuPrincipalView = (MenuPrincipalController)switchScene("MenuPrincipalView.fxml", 900, 600);
             menuPrincipalView.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -84,8 +83,84 @@ public class Main extends Application {
     
     public void menuTicketSoporteView(){
         try{
-            MenuTicketSoporteController menuTicketSoporteView = (MenuTicketSoporteController)switchScene("MenuTicketSoporteView.fxml", 1200,750);
+            MenuTicketSoporteController menuTicketSoporteView = (MenuTicketSoporteController)switchScene("MenuTicketSoporteView.fxml", 1200, 750);
             menuTicketSoporteView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuCargoView(){
+        try{
+            MenuCargoController menuCargoView = (MenuCargoController)switchScene("MenuCargoView.fxml", 1200, 750);
+            menuCargoView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formCargoView(int op){
+        try{
+            FormCargoController formCargoView = (FormCargoController)switchScene("FormCargoView.fxml", 500, 750);
+            formCargoView.setOp(op);
+            formCargoView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void menuCompraView(){
+        try{
+            MenuCompraController menuCompraView = (MenuCompraController)switchScene("MenuCompraView.fxml", 1200, 750);
+            menuCompraView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formCompraView(int op){
+        try{
+            FormCompraController formCompraView = (FormCompraController)switchScene("FormCompraView.fxml", 500, 750);
+            formCompraView.setOp(op);
+            formCompraView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuDistribuidorView(){
+        try{
+            MenuDistribuidorController menuDistribuidorView = (MenuDistribuidorController)switchScene("MenuDistribuidorView.fxml", 1200, 750);
+            menuDistribuidorView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formDistribuidorView(int op){
+        try{
+            FormDistribuidorController formDistribuidorView = (FormDistribuidorController)switchScene("FormDistribuidorView.fxml", 500, 750);
+            formDistribuidorView.setOp(op);
+            formDistribuidorView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void menuCategoriaProductoView(){
+        try{
+            MenuCategoriaProductoController menuCategoriaProductoView = (MenuCategoriaProductoController)switchScene("MenuCategoriaProductoView.fxml", 1200, 750);
+            menuCategoriaProductoView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void formCategoriaProductoView(int op){
+        try{
+            FormCategoriaProductoController formCategoriaProductoView = (FormCategoriaProductoController)switchScene("FormCategoriaProductoView.fxml", 500, 750);
+            formCategoriaProductoView.setOp(op);
+            formCategoriaProductoView.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -93,23 +168,33 @@ public class Main extends Application {
     
     public void menuEmpleadoView(){
         try{
-            MenuEmpleadoController menuEmpleadoController;
-            menuEmpleadoController = (MenuEmpleadoController)switchScene("MenuEmpleadoController.fxml", 750,650);
-            menuEmpleadoController.setStage(this);
+            MenuEmpleadoController menuEmpleadoView = (MenuEmpleadoController)switchScene("MenuEmpleadoView.fxml", 1200, 750);
+            menuEmpleadoView.setStage(this);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+    public void menuFacturaView(){
+        try{
+            MenuFacturaController menuFacturaView = (MenuFacturaController)switchScene("MenuFacturaView.fxml", 1200, 750);
+            menuFacturaView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    /**public void menuProductoView(){
+        try{
+            MenuProductoController menuProductoView = (MenuProductoController)switchScene("MenuProductoView.fxml", 1200, 750);
+            menuProductoView.setStage(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+     * @param args}**/
+    
     public static void main(String[] args) {
         launch(args);
     }
-
-    public void formEmpleadoView(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    
+  
 }
