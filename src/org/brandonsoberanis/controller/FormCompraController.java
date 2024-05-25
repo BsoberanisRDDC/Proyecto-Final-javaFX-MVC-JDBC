@@ -19,6 +19,7 @@ import org.brandonsoberanis.utils.SuperKinalAlert;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.Time;
 
 public class FormCompraController implements Initializable {
     private Main stage;

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Conexion {
     private static Conexion instance;
-    private String jdbcurl = "jdbc:mysql://localhost:3306/superDB?serverTimezone=GMT-6&useSSL=false";
+    private String jdbcurl = "jdbc:mysql://localhost:3306/SuperMerscado?serverTimezone=GMT-6&useSSL=false";
     private String user = "root";
     private String password = "admin";
     

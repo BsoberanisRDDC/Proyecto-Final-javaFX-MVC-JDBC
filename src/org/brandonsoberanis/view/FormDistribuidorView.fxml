@@ -29,11 +29,11 @@
             <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="85.0" text="Cancelar" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
-      <TextField fx:id="tfDistribuidorId" editable="false" layoutX="26.0" layoutY="177.0" prefHeight="30.0" prefWidth="218.0" promptText="Distribuidor Id" />
-      <TextField fx:id="tfNombre" layoutX="26.0" layoutY="246.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el nombre" />
-      <TextField fx:id="tfTelefono" layoutX="26.0" layoutY="331.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el telefono" />
-      <TextField fx:id="tfNit" layoutX="26.0" layoutY="404.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el nit" />
-      <TextField fx:id="tfDireccion" layoutX="26.0" layoutY="470.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese la dirección" />
-      <TextField fx:id="tfWeb" layoutX="32.0" layoutY="549.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese la web" />
+      <TextField fx:id="tfDistribuidorId" editable="false" layoutX="25.0" layoutY="184.0" prefHeight="30.0" prefWidth="218.0" promptText="Distribuidor Id" />
+      <TextField fx:id="tfNombre" layoutX="25.0" layoutY="254.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el nombre" />
+      <TextField fx:id="tfTelefono" layoutX="36.0" layoutY="333.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el telefono" />
+      <TextField fx:id="tfNit" layoutX="36.0" layoutY="398.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el nit" />
+      <TextField fx:id="tfDireccion" layoutX="36.0" layoutY="470.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese la dirección" />
+      <TextField fx:id="tfWeb" layoutX="36.0" layoutY="546.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese la web" />
    </children>
 </AnchorPane>

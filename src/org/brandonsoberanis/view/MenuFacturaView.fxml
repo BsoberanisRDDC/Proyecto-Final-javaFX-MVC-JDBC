@@ -16,13 +16,13 @@
             <Image url="@../image/Fondo%20MenuFactura.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfFacturaId" editable="false" layoutX="65.0" layoutY="143.0" prefHeight="32.0" prefWidth="191.0" promptText="Factura Id" />
-      <TextField fx:id="tfTotal" layoutX="46.0" layoutY="450.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el total (00.00)" />
-      <TextField fx:id="tfHora" layoutX="46.0" layoutY="343.0" prefHeight="32.0" prefWidth="217.0" promptText="Ingrese la hora  (HH:MM:SS)" />
-      <TextField fx:id="tfFecha" layoutX="59.0" layoutY="244.0" prefHeight="34.0" prefWidth="227.0" promptText="Ingrese la fecha (YYYY-MM-DD)" />
-      <ComboBox fx:id="cmbCliente" layoutX="458.0" layoutY="143.0" prefHeight="32.0" prefWidth="179.0" />
-      <ComboBox fx:id="cmbEmpleado" layoutX="764.0" layoutY="133.0" prefHeight="32.0" prefWidth="179.0" />
-      <TableView fx:id="tblFacturas" layoutX="331.0" layoutY="318.0" onMouseClicked="#cargarForm" prefHeight="401.0" prefWidth="706.0">
+      <TextField fx:id="tfFacturaId" editable="false" layoutX="63.0" layoutY="149.0" prefHeight="32.0" prefWidth="191.0" promptText="Factura Id" />
+      <TextField fx:id="tfTotal" layoutX="63.0" layoutY="470.0" prefHeight="32.0" prefWidth="191.0" promptText="Ingrese el total (00.00)" />
+      <TextField fx:id="tfHora" layoutX="63.0" layoutY="359.0" prefHeight="32.0" prefWidth="217.0" promptText="Ingrese la hora  (HH:MM:SS)" />
+      <TextField fx:id="tfFecha" layoutX="65.0" layoutY="260.0" prefHeight="34.0" prefWidth="227.0" promptText="Ingrese la fecha (YYYY-MM-DD)" />
+      <ComboBox fx:id="cmbCliente" layoutX="447.0" layoutY="245.0" prefHeight="32.0" prefWidth="179.0" />
+      <ComboBox fx:id="cmbEmpleado" layoutX="760.0" layoutY="245.0" prefHeight="32.0" prefWidth="179.0" />
+      <TableView fx:id="tblFacturas" layoutX="337.0" layoutY="294.0" onMouseClicked="#cargarForm" prefHeight="401.0" prefWidth="706.0">
         <columns>
           <TableColumn fx:id="colFacturaId" prefWidth="63.20001220703125" text="facturaId" />
           <TableColumn fx:id="colFecha" prefWidth="87.199951171875" text="fecha" />
@@ -35,8 +35,8 @@
       <Button fx:id="btnRegresar" layoutX="14.0" layoutY="710.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Regresar" />
       <Button fx:id="btnGuardar" layoutX="63.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Guardar" />
       <Button fx:id="btnVaciar" alignment="CENTER" layoutX="178.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="97.0" text="Vaciar" wrapText="true" />
-      <TextField fx:id="tfFacturaBuscarId" layoutX="690.0" layoutY="252.0" prefHeight="26.0" prefWidth="264.0" promptText="Ingrese el Id de la factura a buscar" />
+      <TextField fx:id="tfFacturaBuscarId" layoutX="721.0" layoutY="709.0" prefHeight="26.0" prefWidth="264.0" promptText="Ingrese el Id de la factura a buscar" />
       <Button fx:id="btnEliminar" alignment="CENTER" layoutX="337.0" layoutY="706.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="17.0" prefWidth="62.0" text="Eliminar" wrapText="true" />
-      <Button fx:id="btnBuscar" layoutX="969.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Buscar" />
+      <Button fx:id="btnBuscar" layoutX="991.0" layoutY="709.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Buscar" />
    </children>
 </AnchorPane>
