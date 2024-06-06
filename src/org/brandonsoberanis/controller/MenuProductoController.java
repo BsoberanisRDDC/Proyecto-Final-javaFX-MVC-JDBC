@@ -24,6 +24,7 @@ import org.brandonsoberanis.dao.Conexion;
 import org.brandonsoberanis.model.CategoriaProducto;
 import org.brandonsoberanis.model.Distribuidor;
 import org.brandonsoberanis.model.Producto;
+import org.brandonsoberanis.report.GenerarReporte;
 import org.brandonsoberanis.system.Main;
 import org.brandonsoberanis.utils.SuperKinalAlert;
 
@@ -52,7 +53,7 @@ public class MenuProductoController implements Initializable {
     TableColumn colProductoId, colNombre, colDescripcion, colCantidadStock, colPrecioVentaU, colPrecioVentaM, colPrecioCompra, colDistribuidor, colCategoria;
     
     @FXML
-    Button btnGuardar, btnVaciar, btnRegresar, btnEliminar, btnBuscar;
+    Button btnGuardar, btnVaciar, btnRegresar, btnEliminar, btnBuscar, btnFinalizarProducto;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
@@ -82,6 +83,8 @@ public class MenuProductoController implements Initializable {
                 op = 3;
                 cargarDatos();
             }
+        }else if(event.getSource() == btnFinalizarProducto){
+                GenerarReporte.getInstance().generarProducto(Integer.parseInt(tfProductoId.getText()));
         }
     }
     

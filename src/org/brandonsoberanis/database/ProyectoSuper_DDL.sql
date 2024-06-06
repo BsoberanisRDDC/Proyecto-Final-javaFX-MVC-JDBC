@@ -1,8 +1,8 @@
-drop database if exists superDB;
+- drop database if exists BrandonSoberanis;
 
-create database if not exists superDB;
+create database if not exists BrandonSoberanis;
 
-use superDB;
+user BrandonSoberanis;
 
 set global time_zone = '-6:00';
 
@@ -15,6 +15,9 @@ create table Clientes(
     direccion varchar(200) not null,
     primary key PK_clienteId (clienteId)
 );
+
+select * from Clientes
+where Clientes.clienteId = 1;
 
 create table Cargos(
 	cargoId int not null auto_increment,
@@ -29,7 +32,7 @@ create table Compras(
     totalCompra decimal(10, 2),
     primary key PK_compraId (compraId)
 );
--- COMPRAS PENDIENTE EN NETBEANS
+
 create table Distribuidores(
 	distribuidorId int not null auto_increment,
     nombreDistribuidor varchar(30) not null,
@@ -40,12 +43,16 @@ create table Distribuidores(
     primary key PK_distribuidorId (distribuidorId)
 );
 
+-- call sp_agregarDistribuidor('NaturaLab', '5456-8745', '123456789', 'Ciudad', 'NaturaLabFB');
+
 create table CategoriaProductos(
 	categoriaProductoId int not null auto_increment,
     nombreCategoria varchar(30) not null,
     descripcionCategoria varchar(100) not null,
     Primary key PK_categoriaProductoId (categoriaProductoId)
 );
+
+select * from categoriaproductos;
 
 create table Empleados(
 	empleadoId int not null auto_increment,
@@ -77,6 +84,8 @@ create table Facturas(
 		references Empleados (empleadoId)
 );
 
+-- call sp_agregarFactura(1, 1);
+
 create table TicketSoporte(
 	ticketSoporteId int not null auto_increment,
     descripcionTicket varchar (250),
@@ -98,7 +107,6 @@ create table Productos(
     precioVentaUnitario decimal(10, 2) not null,
     precioVentaMayor decimal(10, 2) not null,
     precioCompra decimal(10, 2) not null,
-    imagenProducto blob,
     distribuidorId int not null,
     categoriaProductoId int not null,
     primary key PK_productoId (productoId),
@@ -107,6 +115,13 @@ create table Productos(
     constraint FK_Productos_CategoriaProductos foreign key CategoriaProductos (categoriaProductoId)
 		references CategoriaProductos (categoriaProductoId)
 );
+
+select * from Productos
+join distribuidores on productos.distribuidorId = distribuidores.distribuidorId
+join categoriaProductos on productos.categoriaProductoId = categoriaproductos.categoriaProductoId
+where Productos.productoId = 1;
+
+-- call sp_agregarProducto('Teclado', 'Teclado de computadora.', 20, 15.00, 10.00, 20.00, 1, 1);
 
 create table Promociones(
 	promocionId int not null auto_increment,
@@ -131,6 +146,14 @@ create table DetalleFactura(
 		references Productos (productoId)
 );
 
+-- call sp_agregarDetalleFactura(2, 2);
+
+select * from DetalleFactura
+join Facturas on DetalleFactura.facturaId = Facturas.facturaId
+join Clientes on Facturas.clienteId = Clientes.clienteId
+join Productos on DetalleFactura.productoId = Productos.productoId
+where Facturas.facturaId = 1;
+
 create table DetalleCompra(
 	detalleCompraId int not null auto_increment,
     cantidadCompra int not null,
@@ -143,19 +166,42 @@ create table DetalleCompra(
 		references Compras (compraId)
 );
 
+create table NivelesAcceso(
+	nivelAccesoId int not null auto_increment,
+    nivelAcceso varchar(40) not null,
+    primary key PK_nivelAccesoId (nivelAccesoId)
+);
+
+create table Usuarios(
+	usuarioId int not null auto_increment,
+    usuario varchar(30) not null,
+	contrasenia varchar(100) not null,
+    nivelAccesoId int not null,
+    empleadoId int not null,
+    primary key PK_usuarioId(usuarioId),
+    constraint FK_Usuarios_NivelesAcceso foreign key Usuarios(nivelAccesoId)
+		references NivelesAcceso(nivelAccesoId),
+	constraint FK_Usuarios_Empleados foreign key Usuarios(empleadoId)
+		references Empleados(empleadoId)
+);
+
+select * from Usuarios;
+
 insert into Clientes(nombre, apellido, telefono, nit, direccion) values
-	('Luis', 'Cuxun', '1234-1234', '17302703-0', 'Ciudad'),
-    ('Alejandro', 'Carrillo', '4234-4234', '36987412-0', 'Ciudad'),
-    ('Jesus', 'Sis', '1231-1231', '23548691-0', 'Ciudad');
+	('julio', 'soberanis', '1234-1234', '17302703-0', 'Ciudad'),
+    ('wili', 'sanches', '4234-4234', '36987412-0', 'Ciudad'),
+    ('itadori', 'gojo', '1231-1231', '23548691-0', 'Ciudad');
  
 insert into Cargos(nombreCargo, descripcionCargo) values
-    ('Gerente de Billar', 'Se encarga de mantener todo en orden.');
+    ('Gerente de Supermercado', 'Se encarga de mantener todo en orden.'),
+    ('SubGerente', 'Ayuda a mantener todo en orden.');
     
 insert into Compras(fechaCompra, totalCompra) values
     ('2024-03-23', '100.00');
 
 insert into Empleados(nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId, encargadoId) values
-    ('Carlos', 'Orozco', '200.00', '15:00:00', '23:00:00', 1, 1);
+    ('kevin', 'Gabriel', '200.00', '15:00:00', '23:00:00', 1, 1),
+    ('Brandon','Gabriel', '200.00', '15:00:00', '23:00:00', 2, 1);
     
 insert into Facturas(fecha, hora, clienteId, empleadoId, total) values
     ('2024-03-23', '20:00:00', 1, 1, '17.00');
@@ -164,7 +210,23 @@ insert into TicketSoporte(descripcionTicket, estatus, clienteId, facturaId) valu
     ('Error de prueba', 'Recien creado', 1, 1);
     
 insert into Distribuidores(nombreDistribuidor, telefonoDistribuidor, nitDistribuidor, direccionDistribuidor, web) values
-    ('Jose', '4321-1234', '23548691','Ciudad', 'MercadoLaQuinta');
+    ('roberto', '4321-1234', '23548691','Ciudad', 'MercadoLaQuinta');
     
 insert into CategoriaProductos(nombreCategoria, descripcionCategoria) values
-    ('Electronicos', 'Variedad de instrumentos electronicos.');
+    ('Electrónicos', 'Variedad de instrumentos electronicos.');
+    
+insert into Productos(nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, distribuidorId, categoriaProductoId) values
+    ('Mouse', 'Mouse para computadora.', 15, 50.00, 100.00, 50.00, 1, 1);
+    
+insert into Promociones(precioPromocion, descripcionPromocion, fechaInicio, fechaFinalizacion, productoId) values
+	(15.00, 'Promocion de primavera.', '2024-01-01', '2024-01-02', 1);
+    
+insert into DetalleFactura(facturaId, productoId) values
+	(1, 1);
+    
+insert into DetalleCompra(cantidadCompra, productoId, compraId) values
+	(15, 1, 1);
+    
+insert into NivelesAcceso(nivelAcceso) values
+    ('admin'),
+    ('usuario');

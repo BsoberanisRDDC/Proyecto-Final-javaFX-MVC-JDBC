@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/Fondo%20MenúCargo.png" />
+            <Image url="@../image/Fondo%20MenuCargo.png" />
          </image>
       </ImageView>
       <TableView fx:id="tblCargos" layoutX="58.0" layoutY="222.0" prefHeight="422.0" prefWidth="785.0">

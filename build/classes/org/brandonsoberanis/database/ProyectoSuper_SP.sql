@@ -1,4 +1,4 @@
-use superDB;
+user  BrandonSoberanis;
 
 Delimiter $$
 create procedure sp_agregarCliente(nom varchar(30), ape varchar(30), tel varchar(15), nt varchar(15), dir varchar(200))
@@ -120,10 +120,10 @@ End$$
 Delimiter ;
 
 Delimiter $$
-create procedure sp_agregarCompra(fec date, tot decimal(10,2))
+create procedure sp_agregarCompra()
 Begin
-	insert into Compras(fechaCompra, totalCompra) values
-		(fec, tot);
+	insert into Compras(fechaCompra) values
+		(curdate());
 End $$
 Delimiter ;
 
@@ -159,12 +159,11 @@ End$$
 Delimiter ;
 
 Delimiter $$
-Create procedure sp_EditarCompra(In comId int, In fec date, In tot decimal(10,2))
+Create procedure sp_EditarCompra(In comId int, In fec date)
 	Begin
 		Update Compras
 			Set
-				fechaCompra = fec,
-                totalCompra = tot
+				fechaCompra = fec
 					Where compraId = comId;
 	End$$
 Delimiter ;
@@ -290,7 +289,7 @@ delimiter $$
 create procedure sp_listarTicketSoporte() 
 begin 
     select TS.ticketSoporteId, TS.descripcionTicket, TS.estatus,
-    concat("Id: ", C.clienteId, " | ", C.nombre, " ", C.apellido, " ") As cliente, concat("Id: ", F.facturaId) As factura from TicketSoporte TS
+    concat("Id: ", C.clienteId, " | ", C.nombre, " ", C.apellido) As cliente, concat("Id: ", F.facturaId) As factura from TicketSoporte TS
     Join Clientes C on TS.clienteId = C.clienteId
     Join Facturas F on TS.facturaId = F.facturaId;
 end $$ 
@@ -522,10 +521,10 @@ end$$
 Delimiter ;
 
 delimiter $$
-create procedure sp_agregarFactura(In fec date, In hor time, In cliId int, In empId int, In tot decimal)
+create procedure sp_agregarFactura(In cliId int, In empId int)
 begin
-    insert into Facturas(fecha, hora, clienteId, empleadoId, total) values 
-		(fec, hor, cliId, empId, tot);
+    insert into Facturas(fecha, hora, clienteId, empleadoId) values 
+		(curdate(), curtime(), cliId, empId);
 end $$
 delimiter ;
 
@@ -552,15 +551,12 @@ delimiter ;
 delimiter $$
 create procedure sp_buscarFactura(In facId int)
 begin
-    select
-        Facturas.facturaId,
-        Facturas.fecha,
-        Facturas.hora,
-        Facturas.clienteId,
-        Facturas.empleadoId,
-        Facturas.total
-			from Facturas
-				where facturaId = facId;
+    select F.facturaId, F.fecha, F.hora, 
+		   concat("Id: ", C.clienteId, " | ", C.nombre, " ", C.apellido) As Cliente,
+		   concat("Id: ", E.empleadoId, " | ", E.nombreEmpleado, " ", E.apellidoEmpleado) As Empleado, F.total from Facturas F
+		   Join Clientes C on F.clienteId = C.clienteId
+		   Join Empleados E on F.empleadoId = E.empleadoId
+				where facturaId = fatId;
 end $$
 delimiter ;
 
@@ -679,6 +675,29 @@ begin
 			productoId = proId,
 			compraId = comId
 				where detalleCompraId = detComId;
+end $$
+delimiter ;
+
+delimiter $$
+create procedure sp_agregarUsuario(In usu varchar(30), In con varchar(100), In nivAccId int, empId int)
+begin
+    insert into Usuarios(usuario, contrasenia, nivelAccesoId, empleadoId) values 
+		(usu, con, nivAccId, empId);
+end $$
+delimiter ;
+
+delimiter $$
+create procedure sp_buscarUsuario(usu varchar(30))
+begin
+	select * from Usuarios
+		where usuario = usu;
+end$$
+delimiter ;
+
+delimiter $$
+create procedure sp_listarNivelesAcceso()
+begin
+	select * from NivelesAcceso;
 end $$
 delimiter ;
 

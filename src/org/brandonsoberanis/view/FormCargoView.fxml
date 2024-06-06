@@ -10,17 +10,17 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.brandonsoberanis.controller.FormCargoController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.brandonsoberanis.controller.FormCargoController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/Fondo%20ListaCargo.png" />
+            <Image url="@../image/Fondo%20ListaCargos.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfCargoId" editable="false" layoutX="51.0" layoutY="190.0" prefHeight="32.0" prefWidth="193.0" promptText="Cargo Id" />
-      <TextField fx:id="tfNombre" layoutX="51.0" layoutY="280.0" prefHeight="32.0" prefWidth="193.0" promptText="Ingrese el nombre del cargo" />
-      <TextArea fx:id="taDescripcion" layoutX="33.0" layoutY="388.0" prefHeight="126.0" prefWidth="229.0" promptText="Ingrese la descripcion del cargo" wrapText="true" />
-      <GridPane layoutX="23.0" layoutY="522.0" prefHeight="89.0" prefWidth="278.0">
+      <TextField fx:id="tfCargoId" editable="false" layoutX="36.0" layoutY="165.0" prefHeight="32.0" prefWidth="193.0" promptText="Cargo Id" />
+      <TextField fx:id="tfNombre" layoutX="36.0" layoutY="258.0" prefHeight="32.0" prefWidth="193.0" promptText="Ingrese el nombre del cargo" />
+      <TextArea fx:id="taDescripcion" layoutX="33.0" layoutY="362.0" prefHeight="126.0" prefWidth="229.0" promptText="Ingrese la descripcion del cargo" wrapText="true" />
+      <GridPane layoutX="8.0" layoutY="479.0" prefHeight="89.0" prefWidth="278.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

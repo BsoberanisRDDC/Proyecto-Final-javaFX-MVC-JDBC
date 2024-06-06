@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.brandonsoberanis.controller.FormDistribuidorController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.brandonsoberanis.controller.FormDistribuidorController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,11 +29,11 @@
             <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="85.0" text="Cancelar" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
-      <TextField fx:id="tfDistribuidorId" editable="false" layoutX="25.0" layoutY="184.0" prefHeight="30.0" prefWidth="218.0" promptText="Distribuidor Id" />
-      <TextField fx:id="tfNombre" layoutX="25.0" layoutY="254.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el nombre" />
-      <TextField fx:id="tfTelefono" layoutX="36.0" layoutY="333.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el telefono" />
-      <TextField fx:id="tfNit" layoutX="36.0" layoutY="398.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el nit" />
-      <TextField fx:id="tfDireccion" layoutX="36.0" layoutY="470.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese la dirección" />
-      <TextField fx:id="tfWeb" layoutX="36.0" layoutY="546.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese la web" />
+      <TextField fx:id="tfDistribuidorId" editable="false" layoutX="36.0" layoutY="171.0" prefHeight="30.0" prefWidth="218.0" promptText="Distribuidor Id" />
+      <TextField fx:id="tfNombre" layoutX="36.0" layoutY="242.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el nombre" />
+      <TextField fx:id="tfTelefono" layoutX="36.0" layoutY="306.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el telefono" />
+      <TextField fx:id="tfNit" layoutX="36.0" layoutY="366.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese el nit" />
+      <TextField fx:id="tfDireccion" layoutX="36.0" layoutY="438.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese la dirección" />
+      <TextField fx:id="tfWeb" layoutX="36.0" layoutY="500.0" prefHeight="30.0" prefWidth="218.0" promptText="Ingrese la web" />
    </children>
 </AnchorPane>

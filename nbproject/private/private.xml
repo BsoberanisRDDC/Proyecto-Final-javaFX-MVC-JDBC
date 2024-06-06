@@ -3,7 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/Proyectos-JavaFX-MVC-JDBC-9adc0690bf7e438a7349f625b5caf9d2db89f4d2/src/org/diegomonterroso/system/Main.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/controller/FormUsuarioController.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/database/ProyectoSuper_DDL.sql</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/controller/FormDistribuidorController.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/database/ProyectoSuper_FN_TG.sql</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/controller/MenuFacturaController.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/dao/Conexion.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/controller/MenuProductoController.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/report/Factura_BND.jrxml</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/report/Cliente-BND.jrxml</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/report/Factura_BDN.jrxml</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/database/ProyectoSuper_SP.sql</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/controller/FormDetalleFacturaController.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/controller/FormFacturaController.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/system/Main.java</file>
+            <file>file:/C:/Users/JULIO%20SOBERANIS/Desktop/superKinal69/src/org/brandonsoberanis/report/GenerarReporte.java</file>
         </group>
     </open-files>
 </project-private>

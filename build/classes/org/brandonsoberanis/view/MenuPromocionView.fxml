@@ -10,17 +10,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.brandonsoberanis.controller.MenuPromocionController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.brandonsoberanis.controller.MenuPromocionController">
    <children>
-      <ImageView fitHeight="750.0" fitWidth="1139.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/Diseño%20sin%20título%20(1).png" />
+            <Image url="@../image/FondoMenúPromociones.png" />
          </image></ImageView>
-      <TextField fx:id="tfPromocionId" editable="false" layoutX="46.0" layoutY="212.0" prefHeight="33.0" prefWidth="194.0" promptText="Promocion Id" />
-      <TextField fx:id="tfPrecio" layoutX="46.0" layoutY="313.0" prefHeight="34.0" prefWidth="208.0" promptText="Ingrese el precio de la promo" />
-      <TextField fx:id="tfFechaInicio" layoutX="46.0" layoutY="605.0" prefHeight="34.0" prefWidth="226.0" promptText="Ingrese la fecha (YYYY-DD-MM)" />
-      <TextArea fx:id="taDescripcion" layoutX="46.0" layoutY="409.0" prefHeight="81.0" prefWidth="246.0" promptText="Ingrese la descripcion de la promo" wrapText="true" />
-      <ComboBox fx:id="cmbProducto" layoutX="453.0" layoutY="245.0" prefHeight="33.0" prefWidth="194.0" />
+      <TextField fx:id="tfPromocionId" editable="false" layoutX="14.0" layoutY="170.0" prefHeight="33.0" prefWidth="194.0" promptText="Promocion Id" />
+      <TextField fx:id="tfPrecio" layoutX="28.0" layoutY="245.0" prefHeight="34.0" prefWidth="208.0" promptText="Ingrese el precio de la promo" />
+      <TextField fx:id="tfFechaInicio" layoutX="28.0" layoutY="457.0" prefHeight="34.0" prefWidth="226.0" promptText="Ingrese la fecha (YYYY-DD-MM)" />
+      <TextField fx:id="tfFechaFinalizacion" layoutX="46.0" layoutY="552.0" prefHeight="34.0" prefWidth="226.0" promptText="Ingrese la fecha (YYYY-DD-MM)" />
+      <TextArea fx:id="taDescripcion" layoutX="20.0" layoutY="322.0" prefHeight="100.0" prefWidth="264.0" promptText="Ingrese la descripcion de la promo" wrapText="true" />
+      <ComboBox fx:id="cmbProducto" layoutX="606.0" layoutY="203.0" prefHeight="33.0" prefWidth="194.0" />
       <TableView fx:id="tblPromociones" layoutX="381.0" layoutY="306.0" onMouseClicked="#cargarForm" prefHeight="372.0" prefWidth="631.0">
         <columns>
           <TableColumn fx:id="colPromocionId" prefWidth="75.0" text="promocionId" />

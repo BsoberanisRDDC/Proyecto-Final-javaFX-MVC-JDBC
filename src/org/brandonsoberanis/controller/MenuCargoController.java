@@ -75,6 +75,7 @@ public class MenuCargoController implements Initializable{
         cargarDatos();
     }
     
+    @SuppressWarnings("unchecked")
     public void cargarDatos(){
         if(op == 3){
             tblCargos.getItems().add(buscarCargo());
